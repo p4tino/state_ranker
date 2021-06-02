@@ -1,0 +1,85 @@
+{
+    "build_systems":
+    [
+        {
+            "name": "Run",
+            "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+            "selector": "source.python",
+            "working_dir": "$project_path/..",
+            "windows": {
+                        "cmd": [
+                            "C:/Users/kyleb/AppData/Local/Programs/Python/Python37-32/python.exe",
+                            "src/state_ranker/main.py",
+                            "--debug",
+                            "--console",
+                        ]
+                    },
+            "variants": [
+                {
+                    "name": "Help",
+                    "windows": {
+                        "cmd": [
+                            "C:/Users/kyleb/AppData/Local/Programs/Python/Python37-32/python.exe",
+                            "src/state_ranker/main.py",
+                            "--help",
+                        ]
+                    }
+                },
+            ]
+        },
+        {
+            "name": "Purge Logs",
+            "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+            "working_dir": "$project_path/..",
+            "windows": {
+                "cmd": [
+                    "cmd.exe",
+                    "/c",
+                    "Del .\\log\\*.log",
+                ]
+            }
+        },
+    ],
+    "folders":
+    [
+        {
+            "folder_exclude_patterns":
+            [
+                "log",
+                "ide",
+                "src",
+            ],
+            "name": "state_ranker",
+            "path": "../"
+        },
+        {
+            "name": "Source",
+            "path": "../src",
+            "folder_exclude_patterns":
+            [
+                "__pycache__"
+            ],
+        },
+        {
+            "name": "IDE",
+            "path": "../ide"
+        },
+        {
+            "name": "Log",
+            "path": "../log"
+        },
+        {
+            "name": "Test Projects",
+            "path": "../test_projects"
+        },
+    ],
+    "settings":
+    {
+        "rulers":
+        [
+            72,
+            79
+        ],
+        "tab_size": 4
+    }
+}
